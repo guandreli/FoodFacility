@@ -12,9 +12,7 @@ namespace FoodFacility.Application.CreateFacilities
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<FacilitiesResponse, CreateFacilitiesResult>()
-                .ForMember(d => d.Applicant, opt => opt.MapFrom(s => s.Applicant))
-                .ForMember(d => d.Status, opt => opt.MapFrom(s => s.Status));
+            profile.CreateMap<FacilitiesResponse, CreateFacilitiesResult>();
         }
     }
 }
