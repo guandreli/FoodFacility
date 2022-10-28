@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/FoodFacility.Api/bin/Debug/net6.0
+/src/FoodFacility.Domain/obj/Debug/net6.0
+/src/FoodFacility.Infrastructure/bin/Debug/net6.0
+/.vs/FoodFacility.Api/DesignTimeBuild
+/src/FoodFacility.Domain/bin/Debug/net6.0
+/src/FoodFacility.Application/bin/Debug/net6.0
+/src/FoodFacility.Api/obj/Debug
+/src/FoodFacility.Api/bin/Debug
+/src/FoodFacility.Application/obj/Debug
+/src/FoodFacility.Application/bin/Debug
+/src/FoodFacility.Infrastructure/obj/Debug
+/src/FoodFacility.Infrastructure/bin/Debug
+/.vs/FoodFacility.Api/v17
