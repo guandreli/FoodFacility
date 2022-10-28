@@ -36,4 +36,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\FoodFacility.Domain\FoodFacility.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>
