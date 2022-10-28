@@ -1,8 +1,15 @@
 ﻿namespace FoodFacility.Application.CreateFacilities
 {
-    public class CreateSelectByNameCommand : IRequest<List<CreateSelectByNameResult>>
+    public class CreateSelectByNameCommand : IRequest<List<CreateFacilitiesResult>>
     {
+        /// <summary>
+        /// Facility Name
+        /// </summary>
         public string FacilityName { get; set; }
-        public string Status { get; set; }
+
+        /// <summary>
+        /// Facility status
+        /// </summary>
+        public string? Status { get; set; }
     }
 }

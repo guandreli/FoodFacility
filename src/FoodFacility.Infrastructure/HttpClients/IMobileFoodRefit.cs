@@ -5,5 +5,8 @@ namespace FoodFacility.Infrastructure.HttpClients
     {
         [Get("")]
         Task<List<FacilitiesResponse>> GetFoodFacilitiesByNameAsync(string applicant);
+
+        [Get("")]
+        Task<List<FacilitiesResponse>> GetFoodFacilitiesAsync();
     }
 }

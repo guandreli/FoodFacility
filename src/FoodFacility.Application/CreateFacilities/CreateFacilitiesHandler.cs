@@ -1,13 +1,9 @@
 ﻿using FoodFacility.Domain.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodFacility.Application.CreateFacilities
 {
-    public class CreateFacilitiesHandler : IRequestHandler<CreateSelectByNameCommand, List<CreateSelectByNameResult>>
+    public class CreateFacilitiesHandler : IRequestHandler<CreateSelectByNameCommand, List<CreateFacilitiesResult>>,
+                                           IRequestHandler<CreateSelectByAddressCommand, List<CreateFacilitiesResult>>
     {
         private readonly ILogger<CreateFacilitiesHandler> _logger;
         private readonly IMapper _mapper;
@@ -23,13 +19,28 @@ namespace FoodFacility.Application.CreateFacilities
             _facilitiesService = facilitiesService;
         }
 
-        public async Task<List<CreateSelectByNameResult>> Handle(CreateSelectByNameCommand request, CancellationToken cancellationToken)
+        public async Task<List<CreateFacilitiesResult>> Handle(CreateSelectByNameCommand request, CancellationToken cancellationToken)
         {
             try
             {
                 _logger.LogDebug("Init Handle");
                 var response = await _facilitiesService.GetFacilitiesByNameAsync(request.FacilityName, request.Status);
-                return _mapper.Map<List<CreateSelectByNameResult>>(response);
+                return _mapper.Map<List<CreateFacilitiesResult>>(response);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<List<CreateFacilitiesResult>> Handle(CreateSelectByAddressCommand request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                _logger.LogDebug("Init Handle");
+                var response = await _facilitiesService.GetFacilitiesByAddressAsync(request.Address);
+                return _mapper.Map<List<CreateFacilitiesResult>>(response);
             }
             catch (Exception ex)
             {

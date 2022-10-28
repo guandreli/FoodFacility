@@ -13,10 +13,19 @@ namespace FoodFacility.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
-        [ProducesResponseType(typeof(List<CreateSelectByNameResult>), (int)HttpStatusCode.OK)]
+        [HttpGet("SearchByName")]
+        [ProducesResponseType(typeof(List<CreateFacilitiesResult>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(StackSpot.ErrorHandler.HttpResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Post([FromBody] CreateSelectByNameCommand command)
+        public async Task<IActionResult> GetFacilitiesByName([FromQuery] CreateSelectByNameCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet("SearchByAdress")]
+        [ProducesResponseType(typeof(List<CreateFacilitiesResult>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(StackSpot.ErrorHandler.HttpResponse), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetFacilitiesByAdress([FromQuery] CreateSelectByAddressCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
