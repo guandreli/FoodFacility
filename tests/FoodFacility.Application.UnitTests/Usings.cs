@@ -3,7 +3,7 @@ global using AutoMapper;
 global using Microsoft.Extensions.Logging;
 global using Moq;
 global using FoodFacility.Application.Common.Mappings;
-global using FoodFacility.Application.CreateHelloWorld;
+global using FoodFacility.Application.CreateFacilities;
 global using FoodFacility.Domain.Enums;
 global using FoodFacility.Domain.Models;
 global using Xunit;

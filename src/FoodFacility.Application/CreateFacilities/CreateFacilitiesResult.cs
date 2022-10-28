@@ -1,6 +1,4 @@
-﻿using FoodFacility.Application.Common.Mappings;
-
-namespace FoodFacility.Application.CreateFacilities
+﻿namespace FoodFacility.Application.CreateFacilities
 {
     public class CreateFacilitiesResult : IMapFrom<FacilitiesResponse>
     {

@@ -2,3 +2,9 @@
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using FoodFacility.Domain.Models;
+global using Refit;
+global using FoodFacility.Domain.Interfaces.Services;
+global using FoodFacility.Infrastructure.HttpClients;
+global using FoodFacility.Infrastructure.Services;
+global using Newtonsoft.Json;
+global using Newtonsoft.Json.Serialization;

@@ -10,3 +10,5 @@ global using Microsoft.Extensions.Logging;
 global using StackSpot.ErrorHandler;
 global using FoodFacility.Domain.Enums;
 global using FoodFacility.Domain.Models;
+global using FoodFacility.Domain.Interfaces.Services;
+global using FoodFacility.Application.Common.Mappings;

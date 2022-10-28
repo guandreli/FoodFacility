@@ -32,7 +32,7 @@ namespace FoodFacility.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("Unexpected error" + ex.Message);
+                throw new ArgumentException(ex.Message);
             }
         }
 
@@ -52,7 +52,7 @@ namespace FoodFacility.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new ArgumentException("Unexpected error" + ex.Message);
+                throw new ArgumentException(ex.Message);
             }
         }
     }

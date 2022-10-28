@@ -3,3 +3,4 @@ global using Microsoft.AspNetCore.Mvc;
 global using FoodFacility.Application;
 global using FoodFacility.Infrastructure;
 global using MediatR;
+global using FoodFacility.Application.CreateFacilities;

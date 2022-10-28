@@ -36,4 +36,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\FoodFacility.Application\FoodFacility.Application.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Mappings\" />
+    <Folder Include="CreateFacilities\" />
+  </ItemGroup>
 </Project>

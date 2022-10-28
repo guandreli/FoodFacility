@@ -1,6 +1,4 @@
-﻿using FoodFacility.Application.CreateFacilities;
-
-namespace FoodFacility.Api.Controllers
+﻿namespace FoodFacility.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

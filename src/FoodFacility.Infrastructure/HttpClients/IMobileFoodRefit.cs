@@ -1,5 +1,4 @@
-﻿using Refit;
-namespace FoodFacility.Infrastructure.HttpClients
+﻿namespace FoodFacility.Infrastructure.HttpClients
 {
     public interface IMobileFoodRefit
     {

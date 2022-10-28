@@ -1,6 +1,4 @@
-﻿using FoodFacility.Domain.Interfaces.Services;
-
-namespace FoodFacility.Application.CreateFacilities
+﻿namespace FoodFacility.Application.CreateFacilities
 {
     public class CreateFacilitiesHandler : IRequestHandler<CreateSelectByNameCommand, List<CreateFacilitiesResult>>,
                                            IRequestHandler<CreateSelectByAddressCommand, List<CreateFacilitiesResult>>
@@ -30,7 +28,7 @@ namespace FoodFacility.Application.CreateFacilities
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ArgumentException(ex.Message);
             }
         }
 
@@ -45,7 +43,7 @@ namespace FoodFacility.Application.CreateFacilities
             catch (Exception ex)
             {
 
-                throw ex;
+                throw new ArgumentException(ex.Message);
             }
         }
     }
