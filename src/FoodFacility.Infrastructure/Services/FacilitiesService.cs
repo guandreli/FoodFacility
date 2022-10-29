@@ -1,7 +1,4 @@
-﻿using FoodFacility.Domain.Interfaces.Services;
-using FoodFacility.Infrastructure.HttpClients;
-
-namespace FoodFacility.Infrastructure.Services
+﻿namespace FoodFacility.Infrastructure.Services
 {
     public class FacilitiesService : IFacilitiesService
     {
@@ -17,22 +14,22 @@ namespace FoodFacility.Infrastructure.Services
             try
             {
                 if (string.IsNullOrWhiteSpace(facilityAddress))
-                    throw new ArgumentException("The Address field is required.");
+                    throw new ArgumentNullException("The Address field is required.");
 
                 var facilities = await _mobileFoodRefit.GetFoodFacilitiesAsync();
 
                 var result = new List<FacilitiesResponse>();
                 foreach (var facility in facilities)
                 {
-                    if(facility.Address.ToUpper().Contains(facilityAddress.ToUpper()))
+                    if (facility.Address.ToUpper().Contains(facilityAddress.ToUpper()))
                         result.Add(facility);
                 }
 
                 return result;
             }
-            catch (Exception ex)
+            catch
             {
-                throw new ArgumentException(ex.Message);
+                throw;
             }
         }
 
@@ -41,7 +38,7 @@ namespace FoodFacility.Infrastructure.Services
             try
             {
                 if (string.IsNullOrWhiteSpace(facilityName))
-                    throw new ArgumentException("The Facility Name field is required.");
+                    throw new ArgumentNullException("The Facility Name field is required.");
 
                 var facilities = await _mobileFoodRefit.GetFoodFacilitiesByNameAsync(facilityName);
                 if (status != null && !string.IsNullOrEmpty(status))
@@ -52,7 +49,7 @@ namespace FoodFacility.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new ArgumentException(ex.Message);
+                throw;
             }
         }
     }

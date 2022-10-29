@@ -1,7 +1,6 @@
 ﻿namespace FoodFacility.Application.CreateFacilities
 {
-    public class CreateFacilitiesHandler : IRequestHandler<CreateSelectByNameCommand, List<CreateFacilitiesResult>>,
-                                           IRequestHandler<CreateSelectByAddressCommand, List<CreateFacilitiesResult>>
+    public class CreateFacilitiesHandler : IRequestHandler<CreateFacilitiesCommand, List<CreateFacilitiesResult>>
     {
         private readonly ILogger<CreateFacilitiesHandler> _logger;
         private readonly IMapper _mapper;
@@ -17,34 +16,40 @@
             _facilitiesService = facilitiesService;
         }
 
-        public async Task<List<CreateFacilitiesResult>> Handle(CreateSelectByNameCommand request, CancellationToken cancellationToken)
+        public async Task<List<CreateFacilitiesResult>> Handle(CreateFacilitiesCommand request, CancellationToken cancellationToken)
         {
             try
             {
                 _logger.LogDebug("Init Handle");
-                var response = await _facilitiesService.GetFacilitiesByNameAsync(request.FacilityName, request.Status);
+                if (!IsCommandValid(request))
+                    throw new HttpResponseException(HttpStatusCode.BadRequest, "Informed data is not valid.");
+                var response = new List<FacilitiesResponse>();
+                if (!string.IsNullOrWhiteSpace(request.FacilityName))
+                    response = await _facilitiesService.GetFacilitiesByNameAsync(request.FacilityName, request.Status);
+                else if (!string.IsNullOrWhiteSpace(request.Address))
+                    response = await _facilitiesService.GetFacilitiesByAddressAsync(request.Address);
+
+
                 return _mapper.Map<List<CreateFacilitiesResult>>(response);
             }
-            catch (Exception ex)
+            catch
             {
-
-                throw new ArgumentException(ex.Message);
+                throw;
             }
         }
 
-        public async Task<List<CreateFacilitiesResult>> Handle(CreateSelectByAddressCommand request, CancellationToken cancellationToken)
+        private bool IsCommandValid(CreateFacilitiesCommand request)
         {
-            try
-            {
-                _logger.LogDebug("Init Handle");
-                var response = await _facilitiesService.GetFacilitiesByAddressAsync(request.Address);
-                return _mapper.Map<List<CreateFacilitiesResult>>(response);
-            }
-            catch (Exception ex)
-            {
+            var valid = false;
+            
+            if (!string.IsNullOrWhiteSpace(request.FacilityName))
+                valid = true;
+            else if (!string.IsNullOrWhiteSpace(request.Address))
+                valid = true;
+            else if (request.Latitude.HasValue && request.Longitude.HasValue)
+                valid = true;
 
-                throw new ArgumentException(ex.Message);
-            }
+            return valid;
         }
     }
 }

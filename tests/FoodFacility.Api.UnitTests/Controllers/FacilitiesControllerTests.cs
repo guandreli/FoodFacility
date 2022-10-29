@@ -10,7 +10,7 @@ namespace FoodFacility.Api.UnitTests.Controllers
             //arrange
             var mediatorMock = new Mock<IMediator>();
             var facilitiesResult = new List<CreateFacilitiesResult>();
-            var command = new CreateSelectByNameCommand
+            var command = new CreateFacilitiesCommand
             {
                 FacilityName = "Treats by the Bay LLC",
                 Status = "APPROVED"
@@ -20,7 +20,7 @@ namespace FoodFacility.Api.UnitTests.Controllers
             mediatorMock.Setup(x => x.Send(command, CancellationToken.None)).ReturnsAsync(facilitiesResult);
 
             var controller = new FacilitiesController(mediatorMock.Object);
-            var result = await controller.GetFacilitiesByName(command);
+            var result = await controller.GetFacilities(command);
 
             //assert
             mediatorMock.VerifyAll();
@@ -33,7 +33,7 @@ namespace FoodFacility.Api.UnitTests.Controllers
             //arrange
             var mediatorMock = new Mock<IMediator>();
             var facilitiesResult = new List<CreateFacilitiesResult>();
-            var command = new CreateSelectByAddressCommand
+            var command = new CreateFacilitiesCommand
             {
                 Address = "1 MONTGOMERY ST"
             };
@@ -42,7 +42,7 @@ namespace FoodFacility.Api.UnitTests.Controllers
             mediatorMock.Setup(x => x.Send(command, CancellationToken.None)).ReturnsAsync(facilitiesResult);
 
             var controller = new FacilitiesController(mediatorMock.Object);
-            var result = await controller.GetFacilitiesByAdress(command);
+            var result = await controller.GetFacilities(command);
 
             //assert
             mediatorMock.VerifyAll();

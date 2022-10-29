@@ -2,7 +2,7 @@
 {
     public interface IFacilitiesService
     {
-        Task<List<FacilitiesResponse>> GetFacilitiesByNameAsync(string facilityName, string status);
         Task<List<FacilitiesResponse>> GetFacilitiesByAddressAsync(string facilityAddress);
+        Task<List<FacilitiesResponse>> GetFacilitiesByNameAsync(string facilityName, string status);
     }
 }

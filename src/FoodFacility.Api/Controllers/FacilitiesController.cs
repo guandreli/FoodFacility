@@ -11,19 +11,10 @@
             _mediator = mediator;
         }
 
-        [HttpGet("SearchByName")]
+        [HttpGet("")]
         [ProducesResponseType(typeof(List<CreateFacilitiesResult>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(StackSpot.ErrorHandler.HttpResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> GetFacilitiesByName([FromQuery] CreateSelectByNameCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-
-        [HttpGet("SearchByAdress")]
-        [ProducesResponseType(typeof(List<CreateFacilitiesResult>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(StackSpot.ErrorHandler.HttpResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> GetFacilitiesByAdress([FromQuery] CreateSelectByAddressCommand command)
+        public async Task<IActionResult> GetFacilities([FromQuery] CreateFacilitiesCommand command)
         {
             var result = await _mediator.Send(command);
             return Ok(result);
